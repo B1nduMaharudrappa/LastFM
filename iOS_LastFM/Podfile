@@ -1,0 +1,55 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://bitbucket.org/appsfactoryde/af_iospodspecs'
+
+platform :ios,'10.0'
+use_frameworks!
+inhibit_all_warnings!
+
+def pods
+    
+    # private pod from AF pod repo
+    pod 'AFUtils', '~> 0.0.3'
+    pod 'AFAppUpdate', '~> 3.0'
+    
+    # public pod from cocoapods repo
+    # code analyser / generator
+    pod 'SwiftGen', '~> 5.0'
+    pod 'SwiftLint', '~> 0.23'
+    
+    # data
+    # pod 'ObjectMapper', '~> 3.0'
+    # pod 'RealmSwift', '~> 3.0'
+    
+    # layout / ui
+    
+    
+    # network
+    pod 'Alamofire', '~> 4.0'
+    pod 'AlamofireImage', '~> 3.0'
+    pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
+    pod 'AlamofireObjectMapper', '~> 5.0'
+    
+    # reporting
+    pod 'HockeySDK', '~> 5.0'
+    
+end
+
+target 'TestTask' do
+    pods
+end
+
+target 'TestTaskTests' do
+  pods
+end
+
+target 'TestTaskUITests' do
+  pods
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '4.1'
+    end
+  end
+end

@@ -1,0 +1,6 @@
+framework module AFUtils {
+  umbrella header "AFUtils-umbrella.h"
+
+  export *
+  module * { export * }
+}

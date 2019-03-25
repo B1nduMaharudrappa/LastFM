@@ -1,0 +1,3 @@
+All your managed stuff, for example:
+* Singletons
+...
